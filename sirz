@@ -3,22 +3,9 @@ local camera = workspace.CurrentCamera
 
 
 
-local Line1 = Drawing.new("Line")
-Line1.Visible = true
-Line1.From = Vector2.new(0, 0)
-Line1.To = Vector2.new(200, 200)
-Line1.Color = Color3.fromRGB(255, 255, 255)
-Line1.Thickness = 2
-Line1.Transparency = 1
-
-wait(5)
-
-Line:Remove() --Drawing objects are manually managed.
-
 
 
 for _,v in pairs(game.Players:GetPlayers()) do
-    if v ~= game.Players.LocalPlayer and v.Character ~= nil and v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
         local vector,onScreen = camera:WorldToScreenPoint(v.Character.HumanoidRootPart.Position)
         local Line = Drawing.new("Line")
         Line.Visible = true
@@ -37,5 +24,4 @@ for _,v in pairs(game.Players:GetPlayers()) do
             end)
         end
         coroutine.warp(refresh)()
-    end
 end
