@@ -1,0 +1,48 @@
+
+
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local TextLabel = Instance.new("TextLabel")
+
+--[[
+	Properties:
+--]]
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+TextLabel.Parent = ScreenGui
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.438001245, 0, 0.0196560193, 0)
+TextLabel.Size = UDim2.new(0, 200, 0, 50)
+TextLabel.Font = Enum.Font.AmaticSC
+TextLabel.Text = "SirZ"
+TextLabel.TextColor3 = Color3.new(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+
+--[[
+	 Scripts:
+--]]
+
+local function AIMHPR_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+
+	function round(X)
+		return math.acos(math.cos(X*math.pi)/math.pi)
+	end
+	
+	counter = 0
+	
+	while wait(0.1) do
+		script.Parent.TextColor3 = Color3.fromHSV(round(counter),1,1)
+		counter = counter + 0.01
+	end
+	
+end
+coroutine.wrap(AIMHPR_fake_script)()
