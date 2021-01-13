@@ -9,7 +9,8 @@
 
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
-local Crosshair = Instance.new("ImageLabel")
+local Frame = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
 
 --[[
 	Properties:
@@ -18,6 +19,7 @@ local Crosshair = Instance.new("ImageLabel")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 TextLabel.Parent = ScreenGui
+TextLabel.Active = true
 TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
 TextLabel.BackgroundTransparency = 1
 TextLabel.BorderSizePixel = 0
@@ -30,12 +32,67 @@ TextLabel.TextScaled = true
 TextLabel.TextSize = 14
 TextLabel.TextWrapped = true
 
-Crosshair.Name = "Crosshair"
-Crosshair.Parent = ScreenGui
-Crosshair.BackgroundColor3 = Color3.new(1, 0, 0)
-Crosshair.BackgroundTransparency = 1
-Crosshair.Position = UDim2.new(0.496607006, 0, 0.492628992, 0)
-Crosshair.Size = UDim2.new(0, 11, 0, 11)
-Crosshair.Image = "rbxassetid://3570695787"
-Crosshair.ScaleType = Enum.ScaleType.Slice
-Crosshair.SliceCenter = Rect.new(100, 100, 100, 100)
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.499074668, 0, 0.497542977, 0)
+Frame.Size = UDim2.new(0, 3, 0, 3)
+
+TextLabel_2.Parent = ScreenGui
+TextLabel_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.TextColor3 = Color3.new(0, 0, 0)
+TextLabel_2.TextSize = 14
+
+--[[
+	 Scripts:
+--]]
+
+local function CYYDT_fake_script() -- TextLabel.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel)
+
+	function round(X)
+		return math.acos(math.cos(X*math.pi))/math.pi
+	end
+	
+	counter = 0
+	
+	while wait(0.1) do
+		script.Parent.TextColor3 = Color3.fromHSV(round(counter),1,1)
+		counter = counter + 0.01
+	end
+	
+end
+coroutine.wrap(CYYDT_fake_script)()
+local function EKGYU_fake_script() -- Frame.RainBow 
+	local script = Instance.new('LocalScript', Frame)
+
+	function round(X)
+		return math.acos(math.cos(X*math.pi))/math.pi
+	end
+	
+	counter = 0
+	
+	while wait(0.1) do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(round(counter),1,1)
+		counter = counter + 0.01
+	end
+	
+end
+coroutine.wrap(EKGYU_fake_script)()
+local function ZHHG_fake_script() -- TextLabel_2.LocalScript 
+	local script = Instance.new('LocalScript', TextLabel_2)
+
+	
+	
+	game:GetService("RunService").RenderStepped:Connect(function() ---- loops faster than a while loop :)
+		for i,v in pairs (game:GetService("Players"):GetPlayers()) do
+			if v ~= game:GetService("Players").LocalPlayer and v.Character.Head:FindFirstChild("Cracked esp")==nil and v.TeamColor ~= game:GetService("Players").LocalPlayer.TeamColor then -- craeting checks for team check, local player etc
+				script.Parent.Text = "{"..v.Name.."}"
+			end
+		end
+	end)
+end
+coroutine.wrap(ZHHG_fake_script)()
