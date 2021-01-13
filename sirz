@@ -10,7 +10,7 @@ for _,v in pairs(game.Players:GetPlayers()) do
         Line.To = Vector2.new(vector.X, vector.Y)
         Line.Color = Color3.fromRGB(255, 0, 0)
         Line.Thickness = 1
-        Line.Transparency = 1
+        Line.Transparency = 0.5
 
         function refresh()
             game:GetService("RunService").RenderStepped:Connect(function(step)
